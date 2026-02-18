@@ -369,12 +369,13 @@ if (
         }
     )
 
+OIDC_ONLY = os.getenv("OIDC_ONLY", "false").lower() == "true"
 ACCOUNT_LOGIN_METHODS = {"email"}
 ACCOUNT_SIGNUP_FIELDS = ["email*", "password1*", "password2*"]
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_EMAIL_VERIFICATION = "none"
 SOCIALACCOUNT_LOGIN_ON_GET = True
-SOCIALACCOUNT_ONLY = True
+SOCIALACCOUNT_ONLY = True # disables AllAuth's local users feature. In WYGIWYH, local users are handled by Django.
 SOCIALACCOUNT_AUTO_SIGNUP = os.getenv("OIDC_ALLOW_SIGNUP", "true").lower() == "true"
 SOCIALACCOUNT_EMAIL_AUTHENTICATION = True
 SOCIALACCOUNT_EMAIL_AUTHENTICATION_AUTO_CONNECT = True
