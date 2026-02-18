@@ -52,6 +52,10 @@ class UserLoginView(LoginView):
     template_name = "users/login.html"
     redirect_authenticated_user = True
 
+    def __init__(self):
+        if settings.OIDC_ONLY:
+            return redirect(settings.SOCIALACCOUNT_PROVIDERS[0]["APPS"]["settings"]["server_url"]);
+
 
 @only_htmx
 @htmx_login_required
