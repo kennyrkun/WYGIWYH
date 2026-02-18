@@ -173,6 +173,7 @@ To configure OIDC, you need to set the following environment variables:
 | `OIDC_CLIENT_SECRET` | The Client Secret provided by your OIDC provider.                                                                                                                                                                                                      |
 | `OIDC_SERVER_URL`    | The base URL of your OIDC provider's discovery document or authorization server (e.g., `https://your-provider.com/auth/realms/your-realm`). `django-allauth` will use this to discover the necessary endpoints (authorization, token, userinfo, etc.). |
 | `OIDC_ALLOW_SIGNUP`  | Allow the automatic creation of inexistent accounts on a successfull authentication. Defaults to `true`.                                                                                                                                               |
+| `OIDC_ONLY`  | Disable local user authentication. Cannot be set if no OIDC providers are configured. If exactly one OIDC provider is configured, users will be redirected automatically to that provider. Defaults to `true`.|
 
 **Callback URL (Redirect URI):**
 
