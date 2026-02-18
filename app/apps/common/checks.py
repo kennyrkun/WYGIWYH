@@ -101,3 +101,24 @@ def check_soft_delete_config(app_configs, **kwargs):
                 )
 
     return errors
+
+
+@register()
+def check_oidc_vars(app_configs, **kwargs):
+    """
+    Checks to ensure that OIDC is properly configured.
+
+    Returns a list of Error objects.
+    """
+    
+    errors = []
+
+    if settings.OIDC_ONLY and len(settings.SOCIALACCOUNT_PROVIDERS) != 1:
+        errors.append(
+                Error(
+                    f"Environment variable OIDC_ONLY can only be set when there is exactly one external authentication provider configured.",
+                    id="wygiwyh.E004",
+                )
+            )
+
+    return errors
