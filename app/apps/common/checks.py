@@ -113,10 +113,10 @@ def check_oidc_vars(app_configs, **kwargs):
     
     errors = []
 
-    if settings.OIDC_ONLY and len(settings.SOCIALACCOUNT_PROVIDERS) != 1:
+    if settings.OIDC_ONLY and len(settings.SOCIALACCOUNT_PROVIDERS) > 0:
         errors.append(
                 Error(
-                    f"Environment variable OIDC_ONLY can only be set when there is exactly one external authentication provider configured.",
+                    f"Environment variable OIDC_ONLY can only be set when there is more than one external authentication provider configured.",
                     id="wygiwyh.E004",
                 )
             )
